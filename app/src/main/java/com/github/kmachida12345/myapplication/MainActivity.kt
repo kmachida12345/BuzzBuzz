@@ -67,16 +67,21 @@ fun Greeting(name: String) {
                 itemsIndexed(patternElements) { index, item ->
                     Card(
                     ) {
-                        TextField(
-                            value = patternElements[index].toString(),
-                            onValueChange = {
-                                kotlin.runCatching {
-                                    patternElements[index] = it.toLong()
-                                }
-                            },
-                            label = { Text(text = if (index % 2 == 0) "休" else "鳴") },
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-                        )
+                        Row {
+                            TextField(
+                                value = patternElements[index].toString(),
+                                onValueChange = {
+                                    kotlin.runCatching {
+                                        patternElements[index] = it.toLong()
+                                    }
+                                },
+                                label = { Text(text = if (index % 2 == 0) "休" else "鳴") },
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                            )
+                            Button(onClick = { patternElements.removeAt(index) }) {
+                                Text(text = "delete")
+                            }
+                        }
                     }
                 }
             }
