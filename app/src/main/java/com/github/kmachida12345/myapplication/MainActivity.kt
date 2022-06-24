@@ -55,18 +55,21 @@ fun Greeting(name: String) {
         }
     ) {
         Column(
-            modifier = Modifier.fillMaxSize().padding(16.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             LazyColumn(
-                modifier = Modifier.weight(1f).fillMaxWidth(),
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
                 itemsIndexed(patternElements) { index, item ->
-                    Card(
-                    ) {
+                    Card {
                         Row {
                             TextField(
                                 value = patternElements[index].toString(),
