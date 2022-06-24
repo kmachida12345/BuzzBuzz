@@ -76,6 +76,8 @@ fun Greeting(name: String) {
                                 onValueChange = {
                                     kotlin.runCatching {
                                         patternElements[index] = it.toLong()
+                                    }.onFailure {
+                                        patternElements[index] = 0
                                     }
                                 },
                                 label = { Text(text = if (index % 2 == 0) "休" else "鳴") },
